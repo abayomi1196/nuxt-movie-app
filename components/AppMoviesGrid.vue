@@ -1,6 +1,49 @@
 <template>
   <div class="container movies">
-    <div id="movie-grid" class="movies-grid">
+    <!-- searched movies -->
+    <div v-if="searchInput.length" id="movie-grid" class="movies-grid">
+      <div v-for="movie in searchedMovies" :key="movie.id" class="movie">
+        <div class="movie-img">
+          <img
+            :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+            :alt="movie.title"
+          />
+
+          <p class="review">
+            {{ movie.vote_average }}
+          </p>
+          <p class="overview">
+            {{ movie.overview }}
+          </p>
+        </div>
+
+        <div class="info">
+          <p class="title">
+            {{ movie.title.slice(0, 25) }}
+            <span v-if="movie.title.length > 25">...</span>
+          </p>
+
+          <p class="release">
+            Released:
+            {{
+              new Date(movie.release_date).toLocaleString('en-gb', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })
+            }}
+          </p>
+
+          <nuxt-link class="button button-light" :to="`movies/${movie.id}`">
+            More Details
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
+    <!-- end of searched movies -->
+
+    <!-- streaming movies -->
+    <div v-else id="movie-grid" class="movies-grid">
       <div v-for="movie in movies" :key="movie.id" class="movie">
         <div class="movie-img">
           <img
@@ -39,6 +82,7 @@
         </div>
       </div>
     </div>
+    <!-- end of streaming movies -->
   </div>
 </template>
 
@@ -49,6 +93,14 @@ export default {
     movies: {
       type: Array,
       default: () => [],
+    },
+    searchedMovies: {
+      type: Array,
+      default: () => [],
+    },
+    searchInput: {
+      type: String,
+      default: '',
     },
   },
 };
