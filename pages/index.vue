@@ -1,5 +1,5 @@
 <template>
-  <h1>Hello from Home</h1>
+  <AppHero />
 </template>
 
 <script>
