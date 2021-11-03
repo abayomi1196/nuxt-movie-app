@@ -17,7 +17,10 @@
     </div>
     <!-- end of searchBar -->
 
+    <AppLoader v-if="$fetchState.pending" />
+
     <AppMoviesGrid
+      v-else
       :movies="movies"
       :searched-movies="searchedMovies"
       :search-input="searchTerm"
@@ -47,6 +50,8 @@ export default {
       await this.searchMovies();
     }
   },
+
+  fetchDelay: 1000,
 
   methods: {
     async getMovies() {

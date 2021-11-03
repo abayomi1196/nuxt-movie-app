@@ -13,7 +13,8 @@
             {{ movie.vote_average }}
           </p>
           <p class="overview">
-            {{ movie.overview }}
+            {{ movie.overview.slice(0, 150) }}
+            <span v-if="movie.overview.length > 150">...</span>
           </p>
         </div>
 
@@ -55,7 +56,8 @@
             {{ movie.vote_average }}
           </p>
           <p class="overview">
-            {{ movie.overview }}
+            {{ movie.overview.slice(0, 150) }}
+            <span v-if="movie.overview.length > 150">...</span>
           </p>
         </div>
 
