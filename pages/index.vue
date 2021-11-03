@@ -50,6 +50,23 @@ export default {
       await this.searchMovies();
     }
   },
+  head() {
+    return {
+      title: 'Movie App - Latest In Cinemas & Online',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Get all the latest streaming movies in theaters & online',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'movies, stream, streaming, cinemas, netflix, hbo',
+        },
+      ],
+    };
+  },
 
   fetchDelay: 1000,
 

@@ -77,12 +77,25 @@ export default {
 
   data() {
     return {
-      movieDetail: null,
+      movieDetail: '',
     };
   },
 
   async fetch() {
     await this.getSingleMovie();
+  },
+
+  head() {
+    return {
+      title: `${this.movieDetail.title} | Movie App - Latest In Cinemas & Online`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.movieDetail.overview,
+        },
+      ],
+    };
   },
 
   fetchDelay: 1500,
