@@ -1,4 +1,5 @@
 export default {
+  target: 'server',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-movie-app',
@@ -44,6 +45,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-
-  target: 'static',
 };
