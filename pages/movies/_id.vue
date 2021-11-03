@@ -2,6 +2,12 @@
   <main>
     <AppLoader v-if="$fetchState.pending" />
 
+    <p v-else-if="$fetchState.error" class="error-text">
+      <span
+        >An error occurred. Please check your network connection & refresh</span
+      >
+    </p>
+
     <div v-else class="container single-movie">
       <nuxt-link to="/" class="button">Back</nuxt-link>
 
@@ -39,10 +45,10 @@
           <p class="movie-fact">{{ movieDetail.runtime }} minutes.</p>
 
           <p class="movie-fact">
-            Total Revenue:
-            <span v-if="movieDetail.revenue > 0">
+            Budget:
+            <span v-if="movieDetail.budget > 0">
               {{
-                movieDetail.revenue.toLocaleString('en-us', {
+                movieDetail.budget.toLocaleString('en-us', {
                   style: 'currency',
                   currency: 'USD',
                 })

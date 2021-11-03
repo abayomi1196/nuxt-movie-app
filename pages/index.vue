@@ -19,6 +19,10 @@
 
     <AppLoader v-if="$fetchState.pending" />
 
+    <p v-else-if="$fetchState.error" class="error-text">
+      <span>An error occurred :(</span>
+    </p>
+
     <AppMoviesGrid
       v-else
       :movies="movies"
